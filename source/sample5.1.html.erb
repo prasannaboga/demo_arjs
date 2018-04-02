@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bar Code Example</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+
+</head>
+<body style="margin : 0px; overflow: hidden;">
+
+<a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 5x5;">
+  <a-marker type='barcode' value='4566'>
+    <a-box position='0 0.5 0' material='color: blue;'></a-box>
+  </a-marker>
+  <a-marker type='barcode' value='6'>
+    <a-box position='0 0.5 0' material='color: red;'></a-box>
+  </a-marker>
+  <a-entity camera></a-entity>
+</a-scene>
+</body>
+</html>
+
