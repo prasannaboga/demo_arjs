@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webcodecamjs</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="javascripts/qrcodelib.js"></script>
+  <script type="text/javascript" src="javascripts/webcodecamjquery.js"></script>
+  <script type="text/javascript" src="javascripts/DecoderWorker.js"></script>
+</head>
+<body>
+<hr>
+<canvas id="webcodecam-canvas"></canvas>
+<hr>
+<script type="text/javascript">
+    var args = {
+        resultFunction: function (result) {
+            console.log(result)
+        }
+    };
+
+    var options = {
+        beep: '/audio/beep.mp3',
+        decoderWorker: 'javascripts/DecoderWorker.js'
+    };
+    var decoder = $("#webcodecam-canvas").WebCodeCamJQuery(args).data().plugin_WebCodeCamJQuery.play();;
+</script>
+</body>
+</html>
+
