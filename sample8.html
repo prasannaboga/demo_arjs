@@ -3,15 +3,32 @@
 <head>
   <title>QR Code with AR</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script src="javascripts/artoolkit.debug.js"></script>
-  <script src="javascripts/sample8.js"></script>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+  <script src="javascripts/jsQR.js"></script>
 </head>
-<body style="margin : 0px; overflow: hidden;">
-<a-scene embedded arjs>
-  <a-sphere position="0 0.5 0" radius="1" color="#EF2D5E"></a-sphere>
-  <a-entity camera></a-entity>
-</a-scene>
+<body>
+<canvas id="canvas"></canvas>
+<div id="outputMessage">No QR code detected.</div>
+<script type="text/javascript">
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var outputMessage = document.getElementById("outputMessage");
+
+    navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}}).then(function (stream) {
+        video.srcObject = stream;
+        video.setAttribute("playsinline", true);
+        video.play();
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
+            canvasElement.height = video.videoHeight;
+            canvasElement.width = video.videoWidth;
+            canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+            var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+            var code = jsQR(imageData.data, imageData.width, imageData.height);
+            outputMessage.innerText = code.data;
+        }
+    });
+</script>
 </body>
 </html>
 
