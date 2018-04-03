@@ -12,8 +12,10 @@
 </head>
 <body style="margin : 0px; overflow: hidden;">
 <a-scene embedded arjs>
-  <a-sphere position="0 0.5 0" radius="1" color="#EF2D5E"></a-sphere>
-  <a-entity camera></a-entity>
+  <a-entity scale="2.5 2.5 2.5">
+    <a-sphere position="0 0.5 0" radius="2" color="#EF2D5E"></a-sphere>
+  </a-entity>
+  <a-marker-camera preset='hiro'></a-marker-camera>
 </a-scene>
 </body>
 </html>
