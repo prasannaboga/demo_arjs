@@ -1,36 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Webcodecamjs</title>
+  <title>instascan</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+
 </head>
 <body>
-<h3>Simple initialization with default settings and build select menu</h3>
-<hr>
-<canvas></canvas>
-<hr>
-<select></select>
-<hr>
-<ul></ul>
-<script type="text/javascript" src="javascripts/jquery.js"></script>
-<script type="text/javascript" src="javascripts/qrcodelib.js"></script>
-<script type="text/javascript" src="javascripts/webcodecamjquery.js"></script>
-<script type="text/javascript">
-    var arg = {
-        resultFunction: function (result) {
-            $('body ul').append($('<li>' + result.format + ': ' + result.code + '</li>'));
-        }
-    };
-    var decoder = $("canvas").WebCodeCamJQuery(arg).data().plugin_WebCodeCamJQuery;
-    decoder.buildSelectMenu("select");
-    decoder.play();
-    /*  Without visible select menu
-        decoder.buildSelectMenu(document.createElement('select'), 'environment|back').init(arg).play();
-    */
-    $('select').on('change', function () {
-        decoder.stop().play();
-    });
-</script>
+<a-scene embedded arjs>
+  <a-entity scale="1.5 1.5 1.5">
+    <a-sphere position="0 0.5 0" radius="1" color="#EF2D5E"></a-sphere>
+  </a-entity>
+  <a-marker-camera preset='hiro'></a-marker-camera>
+</a-scene>
 </body>
 </html>
 
